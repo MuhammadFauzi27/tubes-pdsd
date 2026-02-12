@@ -9,10 +9,11 @@ from tensorflow.keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
 import folium
 from streamlit_folium import st_folium
-import os
-import glob
 
 import os
+
+import tensorflow as tf
+st.write(tf.__version__)
 
 # --- TAMBAHKAN BAGIAN INI DI PALING ATAS (BARIS 1) ---
 # Mengatasi error mutex/lock pada macOS
@@ -264,7 +265,7 @@ elif menu == "PM2.5 Prediction (LSTM) 🤖":
                 # Ambil 24 jam sebelumnya (LSTM butuh sequence)
                 # Pastikan fiturnya sesuai dengan saat training (Analyst (3).ipynb)
                 # Biasanya fitur numerik
-                feature_cols = ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3', 'TEMP', 'PRES', 'DEWP', 'RAIN', 'WSPM']
+                feature_cols = ['PM2.5', 'PM10','SO2','NO2','CO','O3']
                 
                 # Kita perlu mengambil 24 data sebelumnya
                 # Locating by position in filtered df might be safer
